@@ -6,7 +6,7 @@
     </div>
     <div class="form">
       <form action="#" method="GET" @submit="formValidate">
-        <fieldset title="fieldset">
+        <fieldset>
           <legend class="hide"></legend>
           <div
             v-for="item in formInputs"
