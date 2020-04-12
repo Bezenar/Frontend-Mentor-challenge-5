@@ -1,0 +1,160 @@
+.flex {
+  display: flex;
+}
+//_______________________________________________________________________ARRAYS WITH VARIABLES____//
+//____________________________________________________________________ARRAY OF BREAKPOINTS________//
+$resp: "", xs, s, m, l, xl;
+//________________________________________________________________________DIRECTIONS ARRAY________//
+$array-dir: dir-col, dir-rrev, dir-crev;
+//___________________________________________________________________JUSTIFY CONTENT ARRAY________//
+$array-jc: jc-start, jc-center, jc-end, jc-sb, jc-sa, jc-se;
+//_______________________________________________________________________ALIGN ITEMS ARRAY________//
+$array-ai: ai-start, ai-center, ai-end, ai-stretch;
+//_____________________________________________________________________ALIGN CONTENT ARRAY________//
+$array-ac: ac-start, ac-center, ac-end, ac-stretch, ac-sa, ac-sb;
+
+//_______________________________________________________MIXIN FOR FLEX DIRECTIONS CLASSES________//
+@mixin dir($d) {
+  @if ($d == "dir-col") {
+    flex-direction: column;
+  }
+  @if ($d == "dir-rrev") {
+    flex-direction: row-reverse;
+  }
+  @if ($d == "dir-crev") {
+    flex-direction: column-reverse;
+  }
+}
+//___________________________________________________________________JUSTIFY CONTENT MIXIN________//
+@mixin jc($jc) {
+  @if ($jc == "jc-start") {
+    justify-content: start;
+  }
+  @if ($jc == "jc-center") {
+    justify-content: center;
+  }
+  @if ($jc == "jc-end") {
+    justify-content: flex-end;
+  }
+  @if ($jc == "jc-sb") {
+    justify-content: space-between;
+  }
+  @if ($jc == "jc-sa") {
+    justify-content: space-around;
+  }
+  @if ($jc == "jc-se") {
+    justify-content: space-evenly;
+  }
+}
+//_______________________________________________________________________ALIGN ITEMS MIXIN________//
+@mixin ai($ai) {
+  @if ($ai == "ai-start") {
+    align-items: flex-start;
+  }
+  @if ($ai == "ai-center") {
+    align-items: center;
+  }
+  @if ($ai == "ai-end") {
+    align-items: flex-end;
+  }
+  @if ($ai == "ai-stretch") {
+    align-items: stretch;
+  }
+}
+//_____________________________________________________________________ALIGN CONTENT MIXIN________//
+@mixin ac($ac) {
+  @if ($ac == "ac-start") {
+    align-content: flex-start;
+  }
+  @if ($ac == "ac-center") {
+    align-content: center;
+  }
+  @if ($ac == "ac-end") {
+    align-content: flex-end;
+  }
+  @if ($ac == "ac-stretch") {
+    align-content: stretch;
+  }
+  @if ($ac == "ac-sa") {
+    align-content: space-around;
+  }
+  @if ($ac == "ac-sb") {
+    align-content: space-between;
+  }
+}
+//_______________________________________CREATE FLEX PROPERTYS CLASSES FOR ALL RESOLUTIONS________//
+@each $r in $resp {
+  @if ($r != "") {
+    //______________________________________________________CLASSES FOR MEADIA BREAKPOINTS________//
+    @include resp($r) {
+      //_________________________________________________________________FLEX WRAP CLASSES________//
+      .#{$r}-nowrap {
+        flex-wrap: nowrap;
+      }
+      .#{$r}-wrap {
+        flex-wrap: wrap;
+      }
+      //___________________________________________________________FLEX DIRECTIONS CLASSES________//
+      @each $var in $array-dir {
+        .#{$r}-#{$var} {
+          @include dir($var);
+        }
+      }
+      //___________________________________________________________JUSTIFY CONTENT CLASSES________//
+      @each $jc-item in $array-jc {
+        .#{$r}-#{$jc-item} {
+          @include jc($jc-item);
+        }
+      }
+      //________________________________________________________________ALIGN ITEM CLASSES________//
+      @each $ai-item in $array-ai {
+        .#{$r}-#{$ai-item} {
+          @include ai($ai-item);
+        }
+      }
+      //_____________________________________________________________ALIGN CONTENT CLASSES________//
+      @each $ac-item in $array-ac {
+        .#{$r}-#{$ac-item} {
+          @include ac($ac-item);
+        }
+      }
+    }
+  }
+  //_____________________________________________________CLASSES WITHOUT MEDIA BREAKPOINTS________//
+  @else {
+    //___________________________________________________________________FLEX WRAP CLASSES________//
+    .wrap {
+      flex-wrap: wrap;
+    }
+    //_____________________________________________________________FLEX DIRECTIONS CLASSES________//
+    @each $var in $array-dir {
+      .#{$var} {
+        @include dir($var);
+      }
+    }
+    //_____________________________________________________________JUSTIFY CONTENT CLASSES________//
+    @each $jc-item in $array-jc {
+      @if ($jc-item != "jc-start") {
+        .#{$jc-item} {
+          @include jc($jc-item);
+        }
+      }
+    }
+    //__________________________________________________________________ALIGN ITEM CLASSES________//
+    @each $ai-item in $array-ai {
+      @if ($ai-item != "ai-stretch") {
+        .#{$ai-item} {
+          @include ai($ai-item);
+        }
+      }
+    }
+    //_______________________________________________________________ALIGN CONTENT CLASSES________//
+    @each $ac-item in $array-ac {
+      @if ($ac-item != "ac-stretch") {
+        .#{$ac-item} {
+          @include ac($ac-item);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+//________________________________________________________________________________IMPORT PARTS____//
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700&display=swap");
+@import "./html-coding/reset";
+@import "./html-coding/colors";
+@import "./html-coding/resp";
+@import "./html-coding/widths";
+@import "./html-coding/flex";
+@import "./styles";
+//_______________________________________________________________________________________Fonts____//
+$mainFont: "Poppins", sans-serif;
+$secondFont: "Times New Roman", Times, serif;
+$fontSize: 16px;
+//_______________________________________________________________________________________Fonts____//
+body {
+  font-family: $mainFont;
+  font-size: $fontSize;
+  font-weight: normal;
+}

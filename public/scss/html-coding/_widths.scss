@@ -1,0 +1,56 @@
+//_________________________________________________________________________ARRAYS OF PROPERTYS____//
+//____________________________________________________________________________ARRAYS OF WIDTHS____//
+$widths: 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100;
+$float-widths: 33, 66;
+//______________________________________________________________________________________MIXINS____//
+@mixin resp-widths($var) {
+  @each $items in $widths {
+    &.#{$var}-wid-#{$items} {
+      width: #{$items + "%"};
+    }
+  }
+  @each $items in $float-widths {
+    &.#{$var}-wid-#{$items} {
+      $items: $items + $items / 100;
+      width: #{$items + "%"};
+    }
+  }
+}
+@mixin widths {
+  @each $items in $widths {
+    &.wid-#{$items} {
+      width: #{$items + "%"};
+    }
+  }
+  @each $items in $float-widths {
+    &.wid-#{$items} {
+      $items: $items + $items / 100;
+      width: #{$items + "%"};
+    }
+  }
+}
+//_____________________________________________________CREATE DESKTOP RESOLUTION WIDTH CLASSES____//
+@include widths;
+//__________________________________________________CREATE WIDTHS CLASSESS FOR ALL BREAKPOINTS____//
+.resp {
+  //----CREATE MAX WIDTHS XS RESOLUTION WIDTH CLASSES//
+  @include resp("xs") {
+    @include resp-widths("xs");
+  }
+  //----CREATE MAX WIDTHS S RESOLUTION WIDTH CLASSES//
+  @include resp("s") {
+    @include resp-widths("s");
+  }
+  //----CREATE MAX WIDTHS M RESOLUTION WIDTHS CLASS//
+  @include resp("m") {
+    @include resp-widths("m");
+  }
+  //----CREATE MAX WIDTHS L RESOLUTION WIDTHS CLASS//
+  @include resp("l") {
+    @include resp-widths("l");
+  }
+  //----CREATE MAX WIDTHS XL RESOLUTION WIDTHS CLASS//
+  @include resp("xl") {
+    @include resp-widths("xl");
+  }
+}

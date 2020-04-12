@@ -1,0 +1,90 @@
+//________________________________________________________________________________BREAKPOINTS____//
+$redd: red;
+$xs: 320px;
+$s: 375px;
+$m: 899px;
+$l: 1199px;
+$xl: 1399px;
+//______________________________________________MIXINS FOR CREATE CLASSES IN MEDIA BREAKPOINTS____//
+//Responsivity
+@mixin resp($var) {
+  @if ($var == "xl") {
+    @media (max-width: $xl) {
+      @content;
+    }
+  }
+  @if ($var == "l") {
+    @media (max-width: $l) {
+      @content;
+    }
+  }
+  @if ($var == "m") {
+    @media (max-width: $m) {
+      @content;
+    }
+  }
+  @if ($var == "s") {
+    @media (max-width: $s) {
+      @content;
+    }
+  }
+  @if ($var == "xs") {
+    @media (max-width: $xs) {
+      @content;
+    }
+  }
+}
+//________________________________________________________HIDE SHOW CLASSES AT ALL RESOLUTIONS____//
+.hide {
+  display: none;
+  &.xs-show {
+    @include resp("xs") {
+      display: block;
+    }
+  }
+  &.s-show {
+    @include resp("s") {
+      display: block;
+    }
+  }
+  &.m-show {
+    @include resp("m") {
+      display: block;
+    }
+  }
+  &.l-show {
+    @include resp("l") {
+      display: block;
+    }
+  }
+  &.xl-show {
+    @include resp("xl") {
+      display: block;
+    }
+  }
+}
+.xs-hide {
+  @include resp("xs") {
+    display: none;
+  }
+}
+.s-hide {
+  @include resp("s") {
+    display: none;
+  }
+}
+.m-hide {
+  @include resp("m") {
+    display: none;
+  }
+}
+.l-hide {
+  @include resp("l") {
+    display: none;
+  }
+}
+.xl-hide {
+  @include resp("xl") {
+    display: none;
+  }
+}
