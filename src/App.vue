@@ -7,6 +7,7 @@
     <div class="form">
       <form action="#" method="GET" @submit="formValidate">
         <fieldset title="fieldset">
+          <legend class="hide"></legend>
           <div
             v-for="item in formInputs"
             :key="item.id"
