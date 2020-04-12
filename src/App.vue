@@ -5,8 +5,8 @@
       <span class="headingThin"> {{ headingThin }}</span>
     </div>
     <div class="form">
-      <form action="#" method="GET" @submit="formValidate" id="form">
-        <fieldset title="contac info" form="form" name="contact info">
+      <form action="#" method="GET" @submit="formValidate">
+        <fieldset aria-label="Contact info">
           <legend class="hide"></legend>
           <div
             v-for="item in formInputs"
