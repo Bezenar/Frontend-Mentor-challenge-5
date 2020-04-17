@@ -1,5 +1,6 @@
 body {
   background: url(../images/bg-intro-desktop.png), $red;
+  position: relative;
 }
 .intro-component {
   .wrapper {
@@ -10,7 +11,7 @@ body {
       padding: 0 1.18rem 0 1.47rem;
     }
     .leftSide {
-      min-height: 90vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -45,8 +46,12 @@ body {
 }
 //_____Footer
 footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   @include resp("s") {
-    height: aut0;
+    position: relative;
     padding: 1.5rem 0 1rem;
   }
   height: 9vh;

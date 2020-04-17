@@ -985,6 +985,7 @@ button {
 
 body {
   background: url(../images/bg-intro-desktop.png), #ff7a7a;
+  position: relative;
 }
 
 .intro-component .wrapper {
@@ -1000,7 +1001,7 @@ body {
 }
 
 .intro-component .wrapper .leftSide {
-  min-height: 90vh;
+  min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1054,12 +1055,17 @@ body {
 }
 
 footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   height: 9vh;
 }
 
 @media (max-width: 375px) {
   footer {
-    height: aut0;
+    position: relative;
     padding: 1.5rem 0 1rem;
   }
 }
